@@ -1,0 +1,13 @@
+[network:children]
+leaf
+spine
+
+[leaf]
+leaf01
+leaf02
+leaf03
+leaf04
+
+[spine]
+spine01
+spine02
