@@ -1,6 +1,6 @@
 ---
 - hosts: network
-  bceome: yes
+  become: yes
   tasks:
    - name: update and upgrade
      apt:
