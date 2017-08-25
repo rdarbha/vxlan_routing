@@ -1,0 +1,30 @@
+---
+- hosts: leaf01
+  tasks:
+   - name: configure leaf01
+     nclu:
+       commands:
+         - add vxlan vx-1000 vxlan local-tunnelip 27.0.0.9
+         - add vxlan vxlan10100 bridge access 1000
+         - add vxlan vxlan10100 bridge learning off
+         - add vxlan vxlan10100 bridge arp-nd-suppress on
+         - add vlan 1000 ip address 45.0.0.2/24
+         - add vlan 1000 ip address-virtual 00:00:5e:00:01:01 45.0.1.1/24
+         - add bgp autonomous-system 5544
+         - add bgp l2vpn evpn neighbor swp1 activate
+         - add bgp l2vpn evpn advertise-all-vni
+
+- hosts: leaf02
+  tasks:
+   - name: configure leaf02
+     nclu:
+       commands:
+         - add vxlan vx-1000 vxlan local-tunnelip 27.0.0.9
+         - add vxlan vxlan10100 bridge access 1000
+         - add vxlan vxlan10100 bridge learning off
+         - add vxlan vxlan10100 bridge arp-nd-suppress on
+         - add vlan 1000 ip address 45.0.0.2/24
+         - add vlan 1000 ip address-virtual 00:00:5e:00:01:01 45.0.1.1/24
+         - add bgp autonomous-system 5544
+         - add bgp l2vpn evpn neighbor swp1 activate
+         - add bgp l2vpn evpn advertise-all-vni

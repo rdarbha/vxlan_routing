@@ -1,0 +1,7 @@
+---
+- hosts: network
+  tasks:
+   - name: update and upgrade
+     apt:
+       update_cache: yes
+       upgrade: yes
